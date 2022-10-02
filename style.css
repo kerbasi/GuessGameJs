@@ -1,0 +1,21 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#main_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    height: 100%;
+}
+
+.inputs {
+    margin: 0 20px;
+}
+
+.inputs input {
+    width: 100px;
+}
