@@ -3,14 +3,24 @@
     <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
+    <header>
+        <h1>Guessing Game!</h1>
+        <h3>Choose guesed number and win!</h3>
+    </header>
     <div id="main_container">
-        <div class="inputs">
-            <label for="lowRange">Нижний диапазон</label>
-            <input type="number" name="lowRange" id="lowRange" value="0" max="1000"/>
+        <div class="inp_range">
+            <label for="minRange">Low Range</label>
+            <input type="number" name="minRange" id="minRange" max="1000" />
         </div>
-        <div class="inputs">
-            <label for="highRange">Верхний диапазон</label>
-            <input type="number" name="highRange" id="highRange" value="10" max="1000"/>
+        <div class="inp_range">
+            <label for="maxRange">High reange</label>
+            <input type="number" name="maxRange" id="maxRange" max="999" />
+        </div>
+        <h3 id="user_attempts">Attempts:</h3>
+        <div class="inp_range user">
+            <label for="userNumber">Chose a number</label>
+            <input type="number" name="userNumber" id="userNumber" />
         </div>
     </div>
+    <script src="index.js"></script>
 </body>

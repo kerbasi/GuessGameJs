@@ -2,20 +2,37 @@
     margin: 0;
     padding: 0;
     height: 100%;
+    color:darkslategrey
+}
+
+header {
+    text-align: center;
 }
 
 #main_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    height: 100%;
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* border: 1px solid black; */
+    /* height: 100%; */
 }
 
-.inputs {
+.inp_range {
     margin: 0 20px;
+    border: 1px solid black;
 }
 
-.inputs input {
+.inp_range input {
+    margin: 30px 10px;
     width: 100px;
+    box-shadow: 0 0 2px black;
+    border: none;
+    border-radius: 5px;
+}
+
+.user {
+    grid-row-start: first;
+    grid-row-end: end;
+    justify-self: center;
+    width: 100%;
 }
