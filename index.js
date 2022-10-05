@@ -8,13 +8,18 @@ const maxRangeEl = document.getElementById("maxRange")
 const userNumberEl = document.getElementById("userNumber")
 const attemptsEl = document.querySelector("#user_attempts")
 const tryButtonEl = document.querySelector("#try_button")
-const newGameEl = 
-userNumber = userNumberEl.value
 
-minRangeEl.setAttribute("value", minRange)
-maxRangeEl.setAttribute("value", maxRange)
-attemptsEl.textContent += userAttemptsCount
-tryButtonEl.addEventListener('click', tryButtonClicked)
+userNumberEl.addEventListener("change", () => {
+    if(userNumberEl.value 
+        && userNumberEl.value < minRange 
+        || userNumberEl.value > maxRange) {
+            tryButtonEl.setAttribute("disabled","")
+        } else {
+            tryButtonEl.removeAttribute("disabled")
+        }
+})
+
+newGame()
 
 function tryButtonClicked() {
     
@@ -22,6 +27,11 @@ function tryButtonClicked() {
         userNumber = userNumberEl.value
         if(userNumber == guessedNumber){
             console.log("You WON")
+            const newGameEl = document.createElement("button")
+            newGameEl.setAttribute("id", "newGame")
+            newGameEl.textContent = "NEW GAME"
+            newGameEl.addEventListener("click", newGame())
+            document.querySelector("#main_container").append(newGameEl)
         } else if(userNumber > guessedNumber){
             console.log("It's too big")
         } else {
@@ -37,6 +47,16 @@ function generateNumber(min, max){
 }
 
 function newGame(){
-    guessedNumber = generateNumber(maxRange, maxRange)
+    guessedNumber = generateNumber(minRange, maxRange)
     userAttemptsCount = 10
+    attemptsEl.textContent += userAttemptsCount
+    minRangeEl.setAttribute("value", minRange)
+    maxRangeEl.setAttribute("value", maxRange)
+    tryButtonEl.addEventListener('click', tryButtonClicked)
+    tryButtonEl.setAttribute("disabled","false")
+    userNumberEl.setAttribute("value", "")
+}
+
+function renderBody() {
+    
 }
