@@ -1,8 +1,9 @@
-﻿html, body {
+﻿html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
-    color:darkslategrey
+    color: darkslategrey;
 }
 
 header {
@@ -35,4 +36,15 @@ header {
     grid-row-end: end;
     justify-self: center;
     width: 100%;
+}
+
+.menu_list {
+    padding-top: 20px;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.menu_list > li {
+    padding: 0 10px;
 }

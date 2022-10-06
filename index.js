@@ -1,4 +1,5 @@
-﻿let userAttemptsCount = 0;
+﻿let attempts = 10;
+let userAttemptsCount;
 let triesCounter = 0;
 let minRange = 0;
 let maxRange = 10;
@@ -9,11 +10,11 @@ const minRangeEl = document.getElementById("minRange");
 const maxRangeEl = document.getElementById("maxRange");
 const userNumberEl = document.getElementById("userNumber");
 const tryButtonEl = document.querySelector("#try_button");
+const attemptsEl = document.querySelector("#attempts");
+tryButtonEl.setAttribute("disabled", "");
 let isGameRunning;
 let newGameEl;
-
-createNewGameBtn();
-
+tryButtonEl.addEventListener("click", tryButtonClicked);
 userNumberEl.addEventListener("change", () => {
     if (
         isGameRunning &&
@@ -25,6 +26,8 @@ userNumberEl.addEventListener("change", () => {
         tryButtonEl.removeAttribute("disabled");
     }
 });
+
+createNewGameBtn();
 
 function tryButtonClicked() {
     userAttemptsCount--;
@@ -68,17 +71,21 @@ function generateNumber(min, max) {
 }
 
 function newGame() {
-    userAttemptsCount = 10;
-    gameTextEl.innerHTML = `
-        <h2>Please choose a number between ${minRange} and ${maxRange}</h2>
-        <h3>You've got ${userAttemptsCount} attempts!</h3>
-        `;
     guessedNumber = generateNumber(minRange, maxRange);
-    minRangeEl.setAttribute("value", minRange);
-    maxRangeEl.setAttribute("value", maxRange);
-    tryButtonEl.addEventListener("click", tryButtonClicked);
-    tryButtonEl.setAttribute("disabled", "false");
-    userNumberEl.value = "";
+    setValues();
     isGameRunning = true;
     newGameEl.remove();
+}
+
+function setValues() {
+    userAttemptsCount = attempts;
+    minRangeEl.setAttribute("value", minRange);
+    maxRangeEl.setAttribute("value", maxRange);
+    attemptsEl.value = attempts;
+    tryButtonEl.setAttribute("disabled", "");
+    userNumberEl.value = "";
+    gameTextEl.innerHTML = `
+    <h2>Please choose a number between ${minRange} and ${maxRange}</h2>
+    <h3>You've got ${userAttemptsCount} attempts!</h3>
+    `;    
 }

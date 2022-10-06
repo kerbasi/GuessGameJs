@@ -4,10 +4,15 @@
 </head>
 <body>
     <header>
-        <h1>Guessing Game!</h1>
-        <h3>Choose guessed number and win!</h3>
+        <ul class="menu_list">
+            <li>New Game</li>
+            <li>Settings</li>
+            <li>Session Stats</li>
+        </ul>
     </header>
     <div id="main_container">
+        <h1>Guessing Game!</h1>
+        <h3>Find guessed number and win!</h3>
         <div class="inp_range">
             <label for="minRange">Low Range</label>
             <input type="number" name="minRange" id="minRange" max="1000" />
@@ -16,6 +21,10 @@
             <label for="maxRange">High range</label>
             <input type="number" name="maxRange" id="maxRange" max="999" />
         </div>
+        <div class="inp_range">
+            <label for="attempts">Attempts</label>
+            <input type="number" name="attempts" id="attempts" max="999" />
+        </div>
         <div id="game_text"></div>
         <div class="inp_range user">
             <label for="userNumber">Chose a number</label>
@@ -23,6 +32,5 @@
         </div>
         <button id="try_button">Try this number!</button>
     </div>
-    <!-- <button id="new_game">NEW GAME</button> -->
     <script src="index.js"></script>
 </body>
