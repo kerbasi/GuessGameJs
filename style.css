@@ -48,3 +48,13 @@ header {
 .menu_list > li {
     padding: 0 10px;
 }
+
+.menu_list > li:hover{
+    cursor: default;
+    color: black;
+}
+
+.disabled, li.disabled:hover{
+    color: gainsboro;
+}
+

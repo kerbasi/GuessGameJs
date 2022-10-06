@@ -11,9 +11,9 @@ const maxRangeEl = document.getElementById("maxRange");
 const userNumberEl = document.getElementById("userNumber");
 const tryButtonEl = document.querySelector("#try_button");
 const attemptsEl = document.querySelector("#attempts");
+const newGameEl = document.querySelector("#new_game")
 tryButtonEl.setAttribute("disabled", "");
 let isGameRunning;
-let newGameEl;
 tryButtonEl.addEventListener("click", tryButtonClicked);
 userNumberEl.addEventListener("change", () => {
     if (
@@ -27,7 +27,7 @@ userNumberEl.addEventListener("change", () => {
     }
 });
 
-createNewGameBtn();
+newGameMenuActivate();
 
 function tryButtonClicked() {
     userAttemptsCount--;
@@ -37,7 +37,7 @@ function tryButtonClicked() {
         userNumber = userNumberEl.value;
         if (userNumber == guessedNumber) {
             text = "You WON";
-            createNewGameBtn();
+            newGameMenuActivate();
             isGameRunning = false;
             userNumberEl.value = "";
             tryButtonEl.setAttribute("disabled", "");
@@ -58,12 +58,9 @@ function tryButtonClicked() {
         }`;
 }
 
-function createNewGameBtn() {
-    newGameEl = document.createElement("button");
-    newGameEl.setAttribute("id", "newGame");
-    newGameEl.textContent = "NEW GAME";
+function newGameMenuActivate() {
     newGameEl.addEventListener("click", newGame);
-    document.querySelector("#main_container").append(newGameEl);
+    newGameEl.classList.remove("disabled")
 }
 
 function generateNumber(min, max) {
@@ -74,7 +71,8 @@ function newGame() {
     guessedNumber = generateNumber(minRange, maxRange);
     setValues();
     isGameRunning = true;
-    newGameEl.remove();
+    newGameEl.classList.add("disabled")
+    newGameEl.removeEventListener("click", newGame)
 }
 
 function setValues() {
