@@ -9,22 +9,27 @@
             <li id="settings">Show Settings</li>
             <li id="stats">Session Stats</li>
         </ul>
+        <section id="settings_section">
+            <div class="inp_range">
+                <label for="minRange">Low Range</label>
+                <input type="number" name="minRange" id="minRange" max="1000" />
+            </div>
+            <div class="inp_range">
+                <label for="maxRange">High range</label>
+                <input type="number" name="maxRange" id="maxRange" max="999" />
+            </div>
+            <div class="inp_range">
+                <label for="attempts">Attempts</label>
+                <input type="number" name="attempts" id="attempts" max="999" />
+            </div>
+        </section>
     </header>
     <div id="main_container">
-        <h1>Guessing Game!</h1>
-        <h3>Find guessed number and win!</h3>
-        <div class="inp_range">
-            <label for="minRange">Low Range</label>
-            <input type="number" name="minRange" id="minRange" max="1000" />
+        <div>
+            <h1>Guessing Game!</h1>
+            <h3>Find guessed number and win!</h3>
         </div>
-        <div class="inp_range">
-            <label for="maxRange">High range</label>
-            <input type="number" name="maxRange" id="maxRange" max="999" />
-        </div>
-        <div class="inp_range">
-            <label for="attempts">Attempts</label>
-            <input type="number" name="attempts" id="attempts" max="999" />
-        </div>
+
         <div id="game_text"></div>
         <div class="inp_range user">
             <label for="userNumber">Chose a number</label>

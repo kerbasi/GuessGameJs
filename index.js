@@ -11,10 +11,15 @@ const maxRangeEl = document.getElementById("maxRange");
 const userNumberEl = document.getElementById("userNumber");
 const tryButtonEl = document.querySelector("#try_button");
 const attemptsEl = document.querySelector("#attempts");
-const newGameEl = document.querySelector("#new_game")
+const newGameEl = document.querySelector("#new_game");
+const showSettingsBtn = document.getElementById("settings");
+const settingSectionEl = document.getElementById("settings_section");
 tryButtonEl.setAttribute("disabled", "");
-let isGameRunning;
+let isGameRunning = false;
+settingSectionEl.style.display = "none";
+
 tryButtonEl.addEventListener("click", tryButtonClicked);
+
 userNumberEl.addEventListener("change", () => {
     if (
         isGameRunning &&
@@ -24,6 +29,16 @@ userNumberEl.addEventListener("change", () => {
         tryButtonEl.setAttribute("disabled", "");
     } else {
         tryButtonEl.removeAttribute("disabled");
+    }
+});
+
+showSettingsBtn.addEventListener("click", () => {
+    if (settingSectionEl.style.display !== "none") {
+        settingSectionEl.style.display = "none";
+        showSettingsBtn.textContent = "Show Settings"
+    } else {
+        settingSectionEl.style.display = "";
+        showSettingsBtn.textContent = "Hide Settings"
     }
 });
 
@@ -60,7 +75,7 @@ function tryButtonClicked() {
 
 function newGameMenuActivate() {
     newGameEl.addEventListener("click", newGame);
-    newGameEl.classList.remove("disabled")
+    newGameEl.classList.remove("disabled");
 }
 
 function generateNumber(min, max) {
@@ -71,8 +86,8 @@ function newGame() {
     guessedNumber = generateNumber(minRange, maxRange);
     setValues();
     isGameRunning = true;
-    newGameEl.classList.add("disabled")
-    newGameEl.removeEventListener("click", newGame)
+    newGameEl.classList.add("disabled");
+    newGameEl.removeEventListener("click", newGame);
 }
 
 function setValues() {
@@ -85,5 +100,5 @@ function setValues() {
     gameTextEl.innerHTML = `
     <h2>Please choose a number between ${minRange} and ${maxRange}</h2>
     <h3>You've got ${userAttemptsCount} attempts!</h3>
-    `;    
+    `;
 }
