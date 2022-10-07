@@ -17,7 +17,7 @@ header {
 }
 
 #main_container {
-    margin: 20px 0;
+    /* margin: 20px 0; */
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -48,7 +48,7 @@ header {
 }
 
 .menu_list {
-    padding-top: 20px;
+    padding: 20px 0;
     display: flex;
     list-style: none;
     justify-content: center;
