@@ -11,24 +11,27 @@ const maxRangeEl = document.getElementById("maxRange");
 const userNumberEl = document.getElementById("userNumber");
 const tryButtonEl = document.querySelector("#try_button");
 const attemptsEl = document.querySelector("#attempts");
-const newGameEl = document.querySelector("#new_game");
+const userInputDivEl = document.querySelector("#user_input") 
+// const newGameEl = document.querySelector("#new_game");
 const showSettingsBtn = document.getElementById("settings");
 const settingSectionEl = document.getElementById("settings_section");
-tryButtonEl.setAttribute("disabled", "");
+// tryButtonEl.setAttribute("disabled", "");
 let isGameRunning = false;
 settingSectionEl.style.display = "none";
+userInputDivEl.style.display = "none"
 
-tryButtonEl.addEventListener("click", tryButtonClicked);
+tryButtonEl.addEventListener("click", newGame);
 
 userNumberEl.addEventListener("change", () => {
-    if (
-        isGameRunning &&
-        userNumberEl.value &&
-        (userNumberEl.value < minRange || userNumberEl.value > maxRange)
-    ) {
+    if(!isGameRunning){
+        return
+    }
+    if (userNumberEl.value < minRange || userNumberEl.value > maxRange){
         tryButtonEl.setAttribute("disabled", "");
-    } else {
+        tryButtonEl.textContent = "Please type a number in the given range"
+    } else {        
         tryButtonEl.removeAttribute("disabled");
+        tryButtonEl.textContent = "Check you number"
     }
 });
 
@@ -42,8 +45,6 @@ showSettingsBtn.addEventListener("click", () => {
     }
 });
 
-newGameMenuActivate();
-
 function tryButtonClicked() {
     userAttemptsCount--;
     triesCounter++;
@@ -52,10 +53,13 @@ function tryButtonClicked() {
         userNumber = userNumberEl.value;
         if (userNumber == guessedNumber) {
             text = "You WON";
-            newGameMenuActivate();
+            userInputDivEl.style.display = "none"
+            tryButtonEl.removeAttribute("disabled");
+            tryButtonEl.textContent = "START NEW GAME"
+            tryButtonEl.removeEventListener("click", tryButtonClicked);
+            tryButtonEl.addEventListener("click", newGame);
             isGameRunning = false;
             userNumberEl.value = "";
-            tryButtonEl.setAttribute("disabled", "");
         } else if (userNumber > guessedNumber) {
             text = "It's too big";
         } else {
@@ -73,21 +77,21 @@ function tryButtonClicked() {
         }`;
 }
 
-function newGameMenuActivate() {
-    newGameEl.addEventListener("click", newGame);
-    newGameEl.classList.remove("disabled");
-}
 
 function generateNumber(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
 function newGame() {
+    userInputDivEl.style.display = ""
+    tryButtonEl.removeEventListener("click", newGame)
+    tryButtonEl.addEventListener("click", tryButtonClicked);
+    tryButtonEl.textContent = "Please type a number in the given range"
     guessedNumber = generateNumber(minRange, maxRange);
     setValues();
     isGameRunning = true;
-    newGameEl.classList.add("disabled");
-    newGameEl.removeEventListener("click", newGame);
+    // newGameEl.classList.add("disabled");
+    // newGameEl.removeEventListener("click", newGame);
 }
 
 function setValues() {

@@ -5,7 +5,7 @@
 <body>
     <header>
         <ul class="menu_list">
-            <li id="new_game" class="disabled">New Game</li>
+            <!-- <li id="new_game" class="disabled">New Game</li> -->
             <li id="settings">Show Settings</li>
             <li id="stats">Session Stats</li>
         </ul>
@@ -25,17 +25,15 @@
         </section>
     </header>
     <div id="main_container">
-        <div>
-            <h1>Guessing Game!</h1>
-            <h3>Find guessed number and win!</h3>
+        <div id="main_text_field">
+            <h1>Number guessing Game!</h1>
         </div>
-
         <div id="game_text"></div>
-        <div class="inp_range user">
+        <div class="inp_range" id="user_input">
             <label for="userNumber">Chose a number</label>
             <input type="number" name="userNumber" id="userNumber" />
         </div>
-        <button id="try_button">Try this number!</button>
+        <button id="try_button">START NEW GAME</button>
     </div>
     <script src="index.js"></script>
 </body>
