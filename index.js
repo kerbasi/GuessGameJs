@@ -12,14 +12,20 @@ const userNumberEl = document.getElementById("userNumber");
 const tryButtonEl = document.querySelector("#try_button");
 const attemptsEl = document.querySelector("#attempts");
 const userInputDivEl = document.querySelector("#user_input") 
-// const newGameEl = document.querySelector("#new_game");
 const showSettingsBtn = document.getElementById("settings");
 const settingSectionEl = document.getElementById("settings_section");
-// tryButtonEl.setAttribute("disabled", "");
+const descriptionEl = document.getElementById("description")
 let isGameRunning = false;
 settingSectionEl.style.display = "none";
 userInputDivEl.style.display = "none"
-
+const descriptionText =  
+    `We have selected a random number between ${minRange} and ${maxRange}. 
+    See if you can guess it in ${attempts} turns or fewer. 
+    We'll tell you if your guess was too high or too low.`
+descriptionEl.textContent = descriptionText;
+minRangeEl.value = minRange;
+maxRangeEl.value = maxRange;
+attemptsEl.value = attempts;
 tryButtonEl.addEventListener("click", newGame);
 
 userNumberEl.addEventListener("change", () => {
@@ -90,8 +96,6 @@ function newGame() {
     guessedNumber = generateNumber(minRange, maxRange);
     setValues();
     isGameRunning = true;
-    // newGameEl.classList.add("disabled");
-    // newGameEl.removeEventListener("click", newGame);
 }
 
 function setValues() {
@@ -105,4 +109,5 @@ function setValues() {
     <h2>Please choose a number between ${minRange} and ${maxRange}</h2>
     <h3>You've got ${userAttemptsCount} attempts!</h3>
     `;
+    descriptionEl.textContent = descriptionText;
 }
