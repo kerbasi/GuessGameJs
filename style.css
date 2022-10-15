@@ -15,6 +15,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 12px;
 }
 
 #title {
@@ -62,12 +63,13 @@ header {
 }
 
 .menu_list > li {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     padding: 0 10px;
+    
 }
 
 label{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .menu_list > li:hover {
@@ -84,11 +86,16 @@ li.disabled:hover {
     margin-top: 20px;
     color: #264653;
     align-self: center;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     width: 150px;
     padding: 10px;
     border: none;
     border-radius: 5px;
     background-color: #2a9d8f;
     /* box-shadow: 0 0 2px #264653; */
+}
+
+#description{
+    max-width: 500px;
+    font-size: 1.4rem;
 }
